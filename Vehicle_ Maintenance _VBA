@@ -1,0 +1,2079 @@
+Sub AddNewCoreVehicle1()
+
+
+Application.ScreenUpdating = False
+
+If Range("F24").Value = 0 Then
+    MsgBox "Please enter Year start date"
+        Exit Sub
+End If
+
+
+If Range("B6").Value = 0 Then
+    MsgBox "Please enter vehicle Registration"
+        Exit Sub
+End If
+
+If Range("C6").Value = 0 Then
+    MsgBox "please enter vehicle type"
+    Exit Sub
+    Else
+
+If Range("C6").Value = "Tractor" Then
+    Range("F6").Value = "N/A"
+    Range("G6").Value = "N/A"
+        If Range("D6").Value = 0 Then
+            MsgBox "Please enter Date of last MOT"
+            Exit Sub
+            Else
+                If Range("E6").Value = 0 Then
+                    MsgBox "Please enter Date of last Service/Inspection"
+                    Exit Sub
+                    Else
+                     If Range("H6").Value = 0 Then
+                            MsgBox "Please enter Tacho Calibration Date"
+                            Exit Sub
+                            Else
+                                If Range("I6").Value = 0 Then
+                                    MsgBox "Please enter Vehicle Type"
+                                    Exit Sub
+                            Else
+                        End If
+                    End If
+                End If
+            End If
+        End If
+    End If
+
+If Range("C6").Value = 0 Then
+    MsgBox "please enter vehicle type"
+    Exit Sub
+    Else
+
+If Range("C6").Value = "Trailer" Then
+    Range("H6").Value = "N/A"
+        If Range("D6").Value = 0 Then
+            MsgBox "Please enter Date of last MOT"
+            Exit Sub
+            Else
+                If Range("E6").Value = 0 Then
+                    MsgBox "Please enter Date of last Service/Inspection"
+                    Exit Sub
+                    Else
+                                If Range("I6").Value = 0 Then
+                                    MsgBox "Please enter Vehicle Type"
+                                    Exit Sub
+                                    Else
+
+
+                    End If
+                End If
+            End If
+        End If
+    End If
+
+If Range("C6").Value = "7.5 T Rigid" Then
+        If Range("D6").Value = 0 Then
+            MsgBox "Please enter Date of last MOT"
+            Exit Sub
+            Else
+                If Range("E6").Value = 0 Then
+                    MsgBox "Please enter Date of last Service/Inspection"
+                    Exit Sub
+                    Else
+                     If Range("F6").Value = 0 Then
+                            MsgBox "Please enter Last LOLA date"
+                            Exit Sub
+                            Else
+                                If Range("I6").Value = 0 Then
+                                    MsgBox "Please enter Vehicle Type"
+                                    Exit Sub
+                                    Else
+                                            If Range("G6").Value = 0 Then
+                                            MsgBox "Please enter Weight test date"
+                                            Exit Sub
+                                            Else
+                                                If Range("H6").Value = 0 Then
+                                                MsgBox "Please enter Tacho calibration date"
+                                                Exit Sub
+                                                Else
+                                End If
+                            End If
+                        End If
+                    End If
+                End If
+            End If
+        End If
+
+    
+If Range("C6").Value = "26ft Rigid" Then
+        If Range("D6").Value = 0 Then
+            MsgBox "Please enter Date of last MOT"
+            Exit Sub
+            Else
+                If Range("E6").Value = 0 Then
+                    MsgBox "Please enter Date of last Service/Inspection"
+                    Exit Sub
+                    Else
+                     If Range("F6").Value = 0 Then
+                            MsgBox "Please enter Last LOLA date"
+                            Exit Sub
+                            Else
+                                If Range("I6").Value = 0 Then
+                                    MsgBox "Please enter Vehicle Type"
+                                    Exit Sub
+                                    Else
+                                            If Range("G6").Value = 0 Then
+                                            MsgBox "Please enter Weight test date"
+                                            Exit Sub
+                                            Else
+                                                If Range("H6").Value = 0 Then
+                                                MsgBox "Please enter Tacho calibration date"
+                                                Exit Sub
+                                                Else
+                                End If
+                            End If
+                        End If
+                    End If
+                End If
+            End If
+        End If
+    
+    
+If Range("C6").Value = "30ft T Rigid" Then
+        If Range("D6").Value = 0 Then
+            MsgBox "Please enter Date of last MOT"
+            Exit Sub
+            Else
+                If Range("E6").Value = 0 Then
+                    MsgBox "Please enter Date of last Service/Inspection"
+                    Exit Sub
+                    Else
+                     If Range("F6").Value = 0 Then
+                            MsgBox "Please enter Last LOLA date"
+                            Exit Sub
+                            Else
+                                If Range("I6").Value = 0 Then
+                                    MsgBox "Please enter Vehicle Type"
+                                    Exit Sub
+                                    Else
+                                            If Range("G6").Value = 0 Then
+                                            MsgBox "Please enter Weight test date"
+                                            Exit Sub
+                                            Else
+                                                If Range("H6").Value = 0 Then
+                                                MsgBox "Please enter Tacho calibration date"
+                                                Exit Sub
+                                                Else
+                                End If
+                            End If
+                        End If
+                    End If
+                End If
+            End If
+        End If
+    
+
+If Range("C6").Value = "Van" Then
+    Range("H6").Value = "N/A"
+    Range("F6").Value = "N/A"
+    Range("G6").Value = "N/A"
+                If Range("D6").Value = 0 Then
+            MsgBox "Please enter Date of last MOT"
+            Exit Sub
+            Else
+                If Range("E6").Value = 0 Then
+                    MsgBox "Please enter Date of last Service/Inspection"
+                    Exit Sub
+                    Else
+                        If Range("I6").Value = 0 Then
+                                    MsgBox "Please enter Vehicle Type"
+                                    Exit Sub
+                                    Else
+                End If
+            End If
+        End If
+    End If
+
+
+' Define Ranges
+Sheets("Core Maintenance Planner").Select
+
+lastrow = Range("C65536").End(xlUp).Row + 2
+NextEmptyRow = Range("C65536").End(xlUp).Row + 3
+
+' Adding Reg to Fleet List and Dates to dates Imputs
+
+    Sheets("New Fleet Addition").Select
+    Range("B6").Select
+    Selection.Copy
+    Sheets("Fleet List").Select
+    Range("A3").Select
+    If ActiveCell.Text = Worksheets("New Fleet Addition").Cells(6, 3) Then
+        Do While Not IsEmpty(ActiveCell)
+                ActiveCell.Offset(1, 0).Select
+                Loop
+            Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+            :=False, Transpose:=False
+        Else
+        Range("b3").Select
+        If ActiveCell.Text = Worksheets("New Fleet Addition").Cells(6, 3) Then
+        Do While Not IsEmpty(ActiveCell)
+                ActiveCell.Offset(1, 0).Select
+                Loop
+            Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+            :=False, Transpose:=False
+            Else
+            Range("c3").Select
+            If ActiveCell.Text = Worksheets("New Fleet Addition").Cells(6, 3) Then
+            Do While Not IsEmpty(ActiveCell)
+                    ActiveCell.Offset(1, 0).Select
+                    Loop
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                :=False, Transpose:=False
+            Else
+                Range("D3").Select
+                If ActiveCell.Text = Worksheets("New Fleet Addition").Cells(6, 3) Then
+                Do While Not IsEmpty(ActiveCell)
+                    ActiveCell.Offset(1, 0).Select
+                    Loop
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                :=False, Transpose:=False
+            Else
+                    Range("E3").Select
+            If ActiveCell.Text = Worksheets("New Fleet Addition").Cells(6, 3) Then
+            Do While Not IsEmpty(ActiveCell)
+                    ActiveCell.Offset(1, 0).Select
+                    Loop
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                :=False, Transpose:=False
+            Else
+                        Range("f3").Select
+            If ActiveCell.Text = Worksheets("New Fleet Addition").Cells(6, 3) Then
+            Do While Not IsEmpty(ActiveCell)
+                    ActiveCell.Offset(1, 0).Select
+                    Loop
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                :=False, Transpose:=False
+                        End If
+                    End If
+                End If
+            End If
+        End If
+    End If
+           
+    
+    Sheets("Dates Input").Select
+    Range("A1").Select
+    Do While Not IsEmpty(ActiveCell)
+        ActiveCell.Offset(1, 0).Select
+        Loop
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+'Add in top of table in Dates Data
+    Range("A1").Select
+    Do While Not IsEmpty(ActiveCell)
+        ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-1, 1).Select
+    Selection.Font.Bold = True
+    ActiveCell.FormulaR1C1 = "Last"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = Interval
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "1"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "2"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "3"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "4"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "5"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "6"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "7"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "8"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    Range("C168:K168").Select
+    ActiveCell.Offset(0, 1).Select
+    Selection.Font.Bold = True
+    Range("A1").Select
+    
+    
+    VehicleReg = Worksheets("New Fleet Addition").Cells(6, 2).Value
+    MSG2 = MsgBox("Is " & VehicleReg & " on a 8 week service rota?", vbYesNo + vbQuestion, "Maintence Shedule")
+If MSG2 = vbYes Then
+    IntervalTime = 56
+Else
+    IntervalTime = 91
+End If
+    
+    Do While Not IsEmpty(ActiveCell)
+        ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.FormulaR1C1 = "Service"
+    ActiveCell.Offset(1, 0).Select
+    ActiveCell.FormulaR1C1 = "Lola"
+    ActiveCell.Offset(1, 0).Select
+    ActiveCell.FormulaR1C1 = "MOT"
+    ActiveCell.Offset(1, 0).Select
+    ActiveCell.FormulaR1C1 = "Weight"
+    ActiveCell.Offset(1, 0).Select
+    ActiveCell.FormulaR1C1 = "Tacho"
+    ActiveCell.Offset(-4, 2).Select
+    ActiveCell.FormulaR1C1 = IntervalTime
+    ActiveCell.Offset(1, 0).Select
+    ActiveCell.FormulaR1C1 = "182"
+    ActiveCell.Offset(1, 0).Select
+    ActiveCell.FormulaR1C1 = "365"
+    ActiveCell.Offset(1, 0).Select
+    ActiveCell.FormulaR1C1 = "365"
+    ActiveCell.Offset(1, 0).Select
+    ActiveCell.FormulaR1C1 = "730"
+'Add in dates to Dates Data
+    Sheets("New Fleet Addition").Select
+    Range("E6").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("A1").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-5, 1).Select
+    ActiveSheet.Paste
+    Sheets("New Fleet Addition").Select
+    Range("F6").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("A1").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-4, 1).Select
+    ActiveSheet.Paste
+    Sheets("New Fleet Addition").Select
+    Range("D6").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("A1").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-3, 1).Select
+    ActiveSheet.Paste
+    Sheets("New Fleet Addition").Select
+    Range("G6").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("A1").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-2, 1).Select
+    ActiveSheet.Paste
+    Sheets("New Fleet Addition").Select
+    Range("H6").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("A1").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-1, 1).Select
+    ActiveSheet.Paste
+    Range("A1").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-11, 3).Select
+    Selection.Copy
+    ActiveCell.Offset(6, 0).Select
+    ActiveSheet.Paste
+        ActiveCell.Offset(-5, 0).Select
+    Selection.Copy
+    ActiveCell.Offset(6, 0).Select
+    ActiveSheet.Paste
+        ActiveCell.Offset(-5, 0).Select
+    Selection.Copy
+    ActiveCell.Offset(6, 0).Select
+    ActiveSheet.Paste
+        ActiveCell.Offset(-5, 0).Select
+    Selection.Copy
+    ActiveCell.Offset(6, 0).Select
+    ActiveSheet.Paste
+        ActiveCell.Offset(-5, 0).Select
+    Selection.Copy
+    ActiveCell.Offset(6, 0).Select
+    ActiveSheet.Paste
+'Adding New row and Reg of Maintance shedule Sheet
+    Sheets("Core Maintenance Planner").Select
+        Range("C" & lastrow & ":C" & lastrow + 1).Select
+        Selection.EntireRow.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromRightOrBelow
+
+'Merge All cells in Mantance Planner
+
+Range("C" & lastrow & ":C" & NextEmptyRow).Select
+Selection.Merge
+Range("D" & lastrow & ":D" & NextEmptyRow).Select
+Selection.Merge
+Range("E" & lastrow & ":E" & NextEmptyRow).Select
+Selection.Merge
+Range("F" & lastrow & ":F" & NextEmptyRow).Select
+Selection.Merge
+
+'Add back in the borders
+Sheets("Core Maintenance Planner").Select
+    
+PlannerRowNumber = 11
+
+Do While Not IsEmpty(Range("D" & PlannerRowNumber))
+    Rows(PlannerRowNumber & ":" & PlannerRowNumber + 1).Select
+    Range("I" & PlannerRowNumber).Activate
+    Selection.Borders(xlEdgeBottom).LineStyle = xlContinuous
+    Selection.Borders(xlEdgeTop).LineStyle = xlContinuous
+    PlannerRowNumber = PlannerRowNumber + 2
+Loop
+    
+Sheets("Dates Input").Select
+
+DatesLastRow = Range("A65536").End(xlUp).Row
+
+'Copy in Reg Number and info to Mintenance planner
+
+    Sheets("New Fleet Addition").Select
+    Range("B6").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Core Maintenance Planner").Select
+    Range("C" & lastrow & ":C" & NextEmptyRow).Select
+    ActiveSheet.Paste
+    Sheets("Dates Input").Select
+    Range("D" & DatesLastRow - 2).Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Core Maintenance Planner").Select
+    Range("F" & lastrow & ":F" & lastrow + 1).Select
+    ActiveSheet.Paste
+    Sheets("Dates Input").Select
+    Range("D" & DatesLastRow).Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Core Maintenance Planner").Select
+    Range("E" & lastrow & ":E" & lastrow + 1).Select
+    ActiveSheet.Paste
+    Sheets("New Fleet Addition").Select
+    Range("I6").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Core Maintenance Planner").Select
+    Range("D" & lastrow & ":D" & lastrow + 1).Select
+    ActiveSheet.Paste
+
+'Add in new furtur dates
+Sheets("Dates input").Select
+   Range("e2").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e2").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveSheet.Paste
+      Range("e3").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e3").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveSheet.Paste
+       Range("e4").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e4").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveSheet.Paste
+       Range("e5").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e5").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveSheet.Paste
+       Range("e6").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveSheet.Paste
+       Range("F2").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-5, 1).Select
+    ActiveSheet.Paste
+        Range("F3").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-4, 1).Select
+    ActiveSheet.Paste
+    Range("F4").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-3, 1).Select
+    ActiveSheet.Paste
+        Range("F5").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-2, 1).Select
+    ActiveSheet.Paste
+        Range("F6").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-1, 1).Select
+    ActiveSheet.Paste
+    
+     Range("G2").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-5, 2).Select
+    ActiveSheet.Paste
+        Range("G3").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-4, 2).Select
+    ActiveSheet.Paste
+    Range("G2").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-5, 3).Select
+    ActiveSheet.Paste
+        Range("G3").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-4, 3).Select
+    ActiveSheet.Paste
+        Range("H2").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-5, 4).Select
+    ActiveSheet.Paste
+        Range("H3").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-4, 4).Select
+    ActiveSheet.Paste
+    Sheets("Dates Input").Select
+            Range("i2").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-5, 5).Select
+    ActiveSheet.Paste
+    Sheets("Dates Input").Select
+             Range("i3").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-4, 5).Select
+    ActiveSheet.Paste
+    Sheets("Dates Input").Select
+             Range("J2").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-5, 6).Select
+    ActiveSheet.Paste
+     Sheets("Dates Input").Select
+                 Range("J3").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-4, 6).Select
+    ActiveSheet.Paste
+'Add in shedule
+
+Worksheets("Core Maintenance Planner").Select
+
+Dim CurrentWC As Date
+Dim NextWC As Date
+Dim DateToFind As Date
+    
+'Add in Service dates
+lastrow = Range("C65536").End(xlUp).Row + 1
+weekcol = 9
+Interval = IntervalTime
+
+Do While weekcol < 61
+    Do While Interval < 456
+    DateToFind = (Worksheets("New Fleet Addition").Cells(6, 5)) + Interval
+    CurrentWC = (Worksheets("Core Maintenance Planner").Cells(8, weekcol))
+    NextWC = (Worksheets("Core Maintenance Planner").Cells(8, weekcol + 1))
+
+        If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+            Cells(lastrow, weekcol).Value = "/"
+        Else
+        End If
+    Interval = Interval + IntervalTime
+    Loop
+    
+weekcol = weekcol + 1
+Interval = IntervalTime
+
+Loop
+If Not Sheets("New Fleet Addition").Cells(6, 3) = "Tractor" Then
+If Not Sheets("New Fleet Addition").Cells(6, 3) = "Van" Then
+'Add in LOLA dates
+weekcol = 9
+IntervalTime = 182
+Interval = IntervalTime
+
+Do While weekcol < 61
+    If Not Cells(lastrow, weekcol).Value = "/" Then
+        Do While Interval < 456
+            DateToFind = (Worksheets("New Fleet Addition").Cells(6, 6)) + Interval
+            CurrentWC = Cells(8, weekcol)
+            NextWC = Cells(8, weekcol + 1)
+                If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+                    Cells(lastrow, weekcol).Value = "I"
+                Else
+                End If
+        Interval = Interval + IntervalTime
+        Loop
+    Else
+        Do While Interval < 456
+            DateToFind = (Worksheets("New Fleet Addition").Cells(6, 6)) + Interval
+            CurrentWC = Cells(8, weekcol)
+            NextWC = Cells(8, weekcol + 1)
+                If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+                    Cells(lastrow, weekcol).Value = Cells(lastrow, weekcol).Value & " I"
+                Else
+                End If
+        Interval = Interval + IntervalTime
+        Loop
+    End If
+weekcol = weekcol + 1
+Interval = IntervalTime
+Loop
+Else
+End If
+Else
+End If
+
+weekcol = 9
+Interval = 365
+
+'Add in MOT
+Do While weekcol < 61
+    If Cells(lastrow, weekcol).Value = 0 Then
+        DateToFind = (Worksheets("New Fleet Addition").Cells(6, 4)) + Interval
+        CurrentWC = Cells(8, weekcol)
+        NextWC = Cells(8, weekcol + 1)
+            If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+                Cells(lastrow, weekcol).Value = "M B"
+            Else
+            End If
+    Else
+        DateToFind = (Worksheets("New Fleet Addition").Cells(6, 4)) + Interval
+        CurrentWC = Cells(8, weekcol)
+        NextWC = Cells(8, weekcol + 1)
+            If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+                Cells(lastrow, weekcol).Value = Cells(lastrow, weekcol).Value & " M B"
+            Else
+            End If
+    End If
+
+weekcol = weekcol + 1
+
+Loop
+
+If Not Sheets("New Fleet Addition").Cells(6, 3) = "Van" Then
+'Add in Weight test date
+weekcol = 9
+
+Do While weekcol < 61
+    If Cells(lastrow, weekcol).Value = 0 Then
+        DateToFind = (Worksheets("New Fleet Addition").Cells(6, 7)) + Interval
+        CurrentWC = Cells(8, weekcol)
+        NextWC = Cells(8, weekcol + 1)
+            If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+                Cells(lastrow, weekcol).Value = "W"
+            Else
+            End If
+    Else
+        DateToFind = (Worksheets("New Fleet Addition").Cells(6, 7)) + Interval
+        CurrentWC = Cells(8, weekcol)
+        NextWC = Cells(8, weekcol + 1)
+            If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+                Cells(lastrow, weekcol).Value = Cells(lastrow, weekcol).Value & " W"
+            Else
+            End If
+    End If
+
+weekcol = weekcol + 1
+
+Loop
+Else
+End If
+
+
+'Add in Tacho Dates
+If Not Sheets("New Fleet Addition").Cells(6, 3) = "Van" Then
+weekcol = 9
+Interval = 730
+
+Do While weekcol < 61
+    If Cells(lastrow, weekcol).Value = 0 Then
+        DateToFind = (Worksheets("New Fleet Addition").Cells(6, 8)) + Interval
+        CurrentWC = Cells(8, weekcol)
+        NextWC = Cells(8, weekcol + 1)
+            If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+                Cells(lastrow, weekcol).Value = "T"
+            Else
+            End If
+    Else
+        DateToFind = (Worksheets("New Fleet Addition").Cells(6, 8)) + Interval
+        CurrentWC = Cells(8, weekcol)
+        NextWC = Cells(8, weekcol + 1)
+            If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+                Cells(lastrow, weekcol).Value = Cells(lastrow, weekcol).Value & " T"
+            Else
+            End If
+    End If
+
+weekcol = weekcol + 1
+
+Loop
+Else
+End If
+
+week = 9
+lastrow = Range("C65536").End(xlUp).Row
+
+Do While Not IsEmpty(Cells(8, week))
+    If Not Cells(lastrow + 1, week) = 0 Then
+    Cells(lastrow, week).Interior.ColorIndex = 2
+    Cells(lastrow + 1, week).Interior.ColorIndex = 2
+    Else
+    End If
+week = week + 1
+Loop
+
+'Finish Dell all "New Fleet Addition" data and message box
+    Sheets("New Fleet Addition").Select
+    
+   MsgBox "New Core Vehicle Added Successfully"
+    
+    Range("B6:I6").Select
+    Selection.ClearContents
+    Range("B6").Select
+
+Application.ScreenUpdating = True
+
+    
+End Sub
+Sub AddNewRentalVehicle()
+
+Application.ScreenUpdating = False
+
+If Range("F24").Value = 0 Then
+    MsgBox "Please enter Year start date"
+        Exit Sub
+End If
+
+If Range("B11").Value = 0 Then
+    MsgBox "Please enter vehicle Registration"
+        Exit Sub
+End If
+
+If Range("C11").Value = 0 Then
+    MsgBox "please enter vehicle type"
+    Exit Sub
+    Else
+
+If Range("C11").Value = "Tractor" Then
+    Range("F11").Value = "N/A"
+    Range("G11").Value = "N/A"
+        If Range("D11").Value = 0 Then
+            MsgBox "Please enter Date of last MOT"
+            Exit Sub
+            Else
+                If Range("E11").Value = 0 Then
+                    MsgBox "Please enter Date of last Service/Inspection"
+                    Exit Sub
+                    Else
+                     If Range("H11").Value = 0 Then
+                            MsgBox "Please enter Tacho Calibration Date"
+                            Exit Sub
+                            Else
+                                If Range("I11").Value = 0 Then
+                                    MsgBox "Please enter Vehicle Type"
+                                    Exit Sub
+                            Else
+                        End If
+                    End If
+                End If
+            End If
+        End If
+    End If
+
+If Range("C11").Value = 0 Then
+    MsgBox "please enter vehicle type"
+    Exit Sub
+    Else
+
+If Range("C11").Value = "Trailer" Then
+    Range("H11").Value = "N/A"
+        If Range("D11").Value = 0 Then
+            MsgBox "Please enter Date of last MOT"
+            Exit Sub
+            Else
+                If Range("E11").Value = 0 Then
+                    MsgBox "Please enter Date of last Service/Inspection"
+                    Exit Sub
+                    Else
+                        If Range("I11").Value = 0 Then
+                            MsgBox "Please enter Vehicle Type"
+                            Exit Sub
+                            Else
+                    End If
+                End If
+            End If
+        End If
+    End If
+
+If Range("C11").Value = "7.5 T Rigid" Then
+        If Range("D11").Value = 0 Then
+            MsgBox "Please enter Date of last MOT"
+            Exit Sub
+            Else
+                If Range("E11").Value = 0 Then
+                    MsgBox "Please enter Date of last Service/Inspection"
+                    Exit Sub
+                    Else
+                     If Range("F11").Value = 0 Then
+                            MsgBox "Please enter Last LOLA date"
+                            Exit Sub
+                            Else
+                                If Range("I11").Value = 0 Then
+                                    MsgBox "Please enter Vehicle Type"
+                                    Exit Sub
+                                    Else
+                                            If Range("G11").Value = 0 Then
+                                            MsgBox "Please enter Weight test date"
+                                            Exit Sub
+                                            Else
+                                                If Range("H11").Value = 0 Then
+                                                MsgBox "Please enter Tacho calibration date"
+                                                Exit Sub
+                                                Else
+                                End If
+                            End If
+                        End If
+                    End If
+                End If
+            End If
+        End If
+
+    
+If Range("C11").Value = "26ft Rigid" Then
+        If Range("D11").Value = 0 Then
+            MsgBox "Please enter Date of last MOT"
+            Exit Sub
+            Else
+                If Range("E11").Value = 0 Then
+                    MsgBox "Please enter Date of last Service/Inspection"
+                    Exit Sub
+                    Else
+                     If Range("F11").Value = 0 Then
+                            MsgBox "Please enter Last LOLA date"
+                            Exit Sub
+                            Else
+                                If Range("I11").Value = 0 Then
+                                    MsgBox "Please enter Vehicle Type"
+                                    Exit Sub
+                                    Else
+                                            If Range("G11").Value = 0 Then
+                                            MsgBox "Please enter Weight test date"
+                                            Exit Sub
+                                            Else
+                                                If Range("H11").Value = 0 Then
+                                                MsgBox "Please enter Tacho calibration date"
+                                                Exit Sub
+                                                Else
+                                End If
+                            End If
+                        End If
+                    End If
+                End If
+            End If
+        End If
+    
+    
+If Range("C11").Value = "30ft T Rigid" Then
+        If Range("D11").Value = 0 Then
+            MsgBox "Please enter Date of last MOT"
+            Exit Sub
+            Else
+                If Range("E11").Value = 0 Then
+                    MsgBox "Please enter Date of last Service/Inspection"
+                    Exit Sub
+                    Else
+                     If Range("F11").Value = 0 Then
+                            MsgBox "Please enter Last LOLA date"
+                            Exit Sub
+                            Else
+                                If Range("I11").Value = 0 Then
+                                    MsgBox "Please enter Vehicle Type"
+                                    Exit Sub
+                                    Else
+                                            If Range("G11").Value = 0 Then
+                                            MsgBox "Please enter Weight test date"
+                                            Exit Sub
+                                            Else
+                                                If Range("H11").Value = 0 Then
+                                                MsgBox "Please enter Tacho calibration date"
+                                                Exit Sub
+                                                Else
+                                End If
+                            End If
+                        End If
+                    End If
+                End If
+            End If
+        End If
+    
+
+If Range("C11").Value = "Van" Then
+    Range("H11").Value = "N/A"
+    Range("F11").Value = "N/A"
+    Range("G11").Value = "N/A"
+                If Range("D11").Value = 0 Then
+            MsgBox "Please enter Date of last MOT"
+            Exit Sub
+            Else
+                If Range("E11").Value = 0 Then
+                    MsgBox "Please enter Date of last Service/Inspection"
+                    Exit Sub
+                    Else
+                        If Range("I11").Value = 0 Then
+                                    MsgBox "Please enter Vehicle Type"
+                                    Exit Sub
+                                    Else
+                End If
+            End If
+        End If
+    End If
+
+
+' Define Ranges
+Sheets("Rental Maintenance Planner").Select
+
+lastrow = Range("C65536").End(xlUp).Row + 2
+NextEmptyRow = Range("C65536").End(xlUp).Row + 3
+
+' Adding Reg to Fleet List and Dates to dates Imputs
+
+    Sheets("New Fleet Addition").Select
+    Range("B11").Select
+    Selection.Copy
+    Sheets("Fleet List").Select
+    Range("A15").Select
+    If ActiveCell.Text = Worksheets("New Fleet Addition").Cells(11, 3) Then
+        Do While Not IsEmpty(ActiveCell)
+                ActiveCell.Offset(1, 0).Select
+                Loop
+            Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+            :=False, Transpose:=False
+        Else
+        Range("b15").Select
+        If ActiveCell.Text = Worksheets("New Fleet Addition").Cells(11, 3) Then
+        Do While Not IsEmpty(ActiveCell)
+                ActiveCell.Offset(1, 0).Select
+                Loop
+            Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+            :=False, Transpose:=False
+            Else
+            Range("c15").Select
+            If ActiveCell.Text = Worksheets("New Fleet Addition").Cells(11, 3) Then
+            Do While Not IsEmpty(ActiveCell)
+                    ActiveCell.Offset(1, 0).Select
+                    Loop
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                :=False, Transpose:=False
+            Else
+                Range("D15").Select
+                If ActiveCell.Text = Worksheets("New Fleet Addition").Cells(11, 3) Then
+                Do While Not IsEmpty(ActiveCell)
+                    ActiveCell.Offset(1, 0).Select
+                    Loop
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                :=False, Transpose:=False
+            Else
+                    Range("E15").Select
+            If ActiveCell.Text = Worksheets("New Fleet Addition").Cells(11, 3) Then
+            Do While Not IsEmpty(ActiveCell)
+                    ActiveCell.Offset(1, 0).Select
+                    Loop
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                :=False, Transpose:=False
+            Else
+                        Range("f15").Select
+            If ActiveCell.Text = Worksheets("New Fleet Addition").Cells(11, 3) Then
+            Do While Not IsEmpty(ActiveCell)
+                    ActiveCell.Offset(1, 0).Select
+                    Loop
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                :=False, Transpose:=False
+                        End If
+                    End If
+                End If
+            End If
+        End If
+    End If
+           
+    
+    Sheets("Dates Input").Select
+    Range("A1").Select
+    Do While Not IsEmpty(ActiveCell)
+        ActiveCell.Offset(1, 0).Select
+        Loop
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+'Add in top of table in Dates Data
+    
+    
+    Range("A1").Select
+    Do While Not IsEmpty(ActiveCell)
+        ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-1, 1).Select
+    Selection.Font.Bold = True
+    ActiveCell.FormulaR1C1 = "Last"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = Interval
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "1"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "2"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "3"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "4"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "5"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "6"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "7"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    ActiveCell.Offset(0, 1).Select
+    ActiveCell.FormulaR1C1 = "8"
+    ActiveCell.Interior.ColorIndex = 15
+    ActiveCell.Font.Bold = True
+    Range("C168:K168").Select
+    ActiveCell.Offset(0, 1).Select
+    Selection.Font.Bold = True
+    
+    VehicleReg = Worksheets("New Fleet Addition").Cells(11, 2).Value
+
+MSG2 = MsgBox("Is " & VehicleReg & " on a 8 week service rota?", vbYesNo + vbQuestion, "Maintence Shedule")
+If MSG2 = vbYes Then
+    IntervalTime = 56
+Else
+    IntervalTime = 91
+End If
+    
+    
+    Range("A1").Select
+    Do While Not IsEmpty(ActiveCell)
+        ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.FormulaR1C1 = "Service"
+    ActiveCell.Offset(1, 0).Select
+    ActiveCell.FormulaR1C1 = "Lola"
+    ActiveCell.Offset(1, 0).Select
+    ActiveCell.FormulaR1C1 = "MOT"
+    ActiveCell.Offset(1, 0).Select
+    ActiveCell.FormulaR1C1 = "Weight"
+    ActiveCell.Offset(1, 0).Select
+    ActiveCell.FormulaR1C1 = "Tacho"
+    ActiveCell.Offset(-4, 2).Select
+    ActiveCell.FormulaR1C1 = IntervalTime
+    ActiveCell.Offset(1, 0).Select
+    ActiveCell.FormulaR1C1 = "182"
+    ActiveCell.Offset(1, 0).Select
+    ActiveCell.FormulaR1C1 = "365"
+    ActiveCell.Offset(1, 0).Select
+    ActiveCell.FormulaR1C1 = "365"
+    ActiveCell.Offset(1, 0).Select
+    ActiveCell.FormulaR1C1 = "730"
+'Add in dates to Dates Data
+    Sheets("New Fleet Addition").Select
+    Range("E11").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("A1").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-5, 1).Select
+    ActiveSheet.Paste
+    Sheets("New Fleet Addition").Select
+    Range("F11").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("A1").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-4, 1).Select
+    ActiveSheet.Paste
+    Sheets("New Fleet Addition").Select
+    Range("D11").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("A1").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-3, 1).Select
+    ActiveSheet.Paste
+    Sheets("New Fleet Addition").Select
+    Range("G11").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("A1").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-2, 1).Select
+    ActiveSheet.Paste
+    Sheets("New Fleet Addition").Select
+    Range("H11").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("A1").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-1, 1).Select
+    ActiveSheet.Paste
+    Range("A1").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-11, 3).Select
+    Selection.Copy
+    ActiveCell.Offset(6, 0).Select
+    ActiveSheet.Paste
+        ActiveCell.Offset(-5, 0).Select
+    Selection.Copy
+    ActiveCell.Offset(6, 0).Select
+    ActiveSheet.Paste
+        ActiveCell.Offset(-5, 0).Select
+    Selection.Copy
+    ActiveCell.Offset(6, 0).Select
+    ActiveSheet.Paste
+        ActiveCell.Offset(-5, 0).Select
+    Selection.Copy
+    ActiveCell.Offset(6, 0).Select
+    ActiveSheet.Paste
+        ActiveCell.Offset(-5, 0).Select
+    Selection.Copy
+    ActiveCell.Offset(6, 0).Select
+    ActiveSheet.Paste
+'Adding New row and Reg of Maintance shedule Sheet
+    Sheets("Rental Maintenance Planner").Select
+        Range("C" & lastrow & ":C" & lastrow + 1).Select
+        Selection.EntireRow.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromRightOrBelow
+
+'Merge All cells in Mantance Planner
+
+Range("C" & lastrow & ":C" & NextEmptyRow).Select
+Selection.Merge
+Range("D" & lastrow & ":D" & NextEmptyRow).Select
+Selection.Merge
+Range("E" & lastrow & ":E" & NextEmptyRow).Select
+Selection.Merge
+Range("F" & lastrow & ":F" & NextEmptyRow).Select
+Selection.Merge
+Range("G" & lastrow & ":G" & NextEmptyRow).Select
+Selection.Merge
+Range("H" & lastrow & ":H" & NextEmptyRow).Select
+Selection.Merge
+
+'Add back in the borders
+Sheets("Rental Maintenance Planner").Select
+    
+PlannerRowNumber = 11
+
+Do While Not IsEmpty(Range("D" & PlannerRowNumber))
+    Rows(PlannerRowNumber & ":" & PlannerRowNumber + 1).Select
+    Range("I" & PlannerRowNumber).Activate
+    Selection.Borders(xlEdgeBottom).LineStyle = xlContinuous
+    Selection.Borders(xlEdgeTop).LineStyle = xlContinuous
+    PlannerRowNumber = PlannerRowNumber + 2
+Loop
+    
+Sheets("Dates Input").Select
+
+DatesLastRow = Range("A65536").End(xlUp).Row
+
+'Copy in Reg Number and info to Mintenance planner
+
+    Sheets("New Fleet Addition").Select
+    Range("B11").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Rental Maintenance Planner").Select
+    Range("C" & lastrow & ":C" & NextEmptyRow).Select
+    ActiveSheet.Paste
+    Sheets("Dates Input").Select
+    Range("D" & DatesLastRow - 2).Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Rental Maintenance Planner").Select
+    Range("F" & lastrow & ":F" & lastrow + 1).Select
+    ActiveSheet.Paste
+    Sheets("Dates Input").Select
+    Range("D" & DatesLastRow).Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Rental Maintenance Planner").Select
+    Range("E" & lastrow & ":E" & lastrow + 1).Select
+    ActiveSheet.Paste
+    Sheets("New Fleet Addition").Select
+    Range("I11").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Rental Maintenance Planner").Select
+    Range("D" & lastrow & ":D" & lastrow + 1).Select
+    ActiveSheet.Paste
+
+'Add in new furtur dates
+Sheets("Dates input").Select
+   Range("e2").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e2").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveSheet.Paste
+      Range("e3").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e3").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveSheet.Paste
+       Range("e4").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e4").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveSheet.Paste
+       Range("e5").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e5").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveSheet.Paste
+       Range("e6").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveSheet.Paste
+       Range("F2").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-5, 1).Select
+    ActiveSheet.Paste
+        Range("F3").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-4, 1).Select
+    ActiveSheet.Paste
+    Range("F4").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-3, 1).Select
+    ActiveSheet.Paste
+        Range("F5").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-2, 1).Select
+    ActiveSheet.Paste
+        Range("F6").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-1, 1).Select
+    ActiveSheet.Paste
+    
+     Range("G2").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-5, 2).Select
+    ActiveSheet.Paste
+        Range("G3").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-4, 2).Select
+    ActiveSheet.Paste
+    Range("G2").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-5, 3).Select
+    ActiveSheet.Paste
+        Range("G3").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-4, 3).Select
+    ActiveSheet.Paste
+        Range("H2").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-5, 4).Select
+    ActiveSheet.Paste
+        Range("H3").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-4, 4).Select
+    ActiveSheet.Paste
+    Sheets("Dates Input").Select
+            Range("i2").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-5, 5).Select
+    ActiveSheet.Paste
+    Sheets("Dates Input").Select
+             Range("i3").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-4, 5).Select
+    ActiveSheet.Paste
+    Sheets("Dates Input").Select
+             Range("J2").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-5, 6).Select
+    ActiveSheet.Paste
+     Sheets("Dates Input").Select
+                 Range("J3").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Dates Input").Select
+    Range("e6").Select
+    Do While Not IsEmpty(ActiveCell)
+            ActiveCell.Offset(1, 0).Select
+        Loop
+    ActiveCell.Offset(-4, 6).Select
+    ActiveSheet.Paste
+
+'Add in shedule
+
+Worksheets("Rental Maintenance Planner").Select
+
+Dim CurrentWC As Date
+Dim NextWC As Date
+Dim DateToFind As Date
+    
+'Add in Service dates
+lastrow = Range("C65536").End(xlUp).Row + 1
+weekcol = 9
+Interval = IntervalTime
+
+Do While weekcol < 61
+    Do While Interval < 456
+    DateToFind = (Worksheets("New Fleet Addition").Cells(11, 5)) + Interval
+    CurrentWC = (Worksheets("Core Maintenance Planner").Cells(8, weekcol))
+    NextWC = (Worksheets("Core Maintenance Planner").Cells(8, weekcol + 1))
+
+        If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+            Cells(lastrow, weekcol).Value = "/"
+        Else
+        End If
+    Interval = Interval + IntervalTime
+    Loop
+    
+weekcol = weekcol + 1
+Interval = IntervalTime
+
+Loop
+
+If Not Sheets("New Fleet Addition").Cells(6, 3) = "Tractor" Then
+If Not Sheets("New Fleet Addition").Cells(6, 3) = "Van" Then
+
+'Add in LOLA dates
+weekcol = 9
+IntervalTime = 182
+Interval = IntervalTime
+
+Do While weekcol < 61
+    If Not Cells(lastrow, weekcol).Value = "/" Then
+        Do While Interval < 456
+            DateToFind = (Worksheets("New Fleet Addition").Cells(11, 6)) + Interval
+            CurrentWC = Cells(8, weekcol)
+            NextWC = Cells(8, weekcol + 1)
+                If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+                    Cells(lastrow, weekcol).Value = "I"
+                Else
+                End If
+        Interval = Interval + IntervalTime
+        Loop
+    Else
+        Do While Interval < 456
+            DateToFind = (Worksheets("New Fleet Addition").Cells(11, 6)) + Interval
+            CurrentWC = Cells(8, weekcol)
+            NextWC = Cells(8, weekcol + 1)
+                If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+                    Cells(lastrow, weekcol).Value = Cells(lastrow, weekcol).Value & " I"
+                Else
+                End If
+        Interval = Interval + IntervalTime
+        Loop
+    End If
+weekcol = weekcol + 1
+Interval = IntervalTime
+Loop
+
+weekcol = 9
+Interval = 365
+Else
+End If
+Else
+End If
+
+'Add in MOT
+Do While weekcol < 61
+    If Cells(lastrow, weekcol).Value = 0 Then
+        DateToFind = (Worksheets("New Fleet Addition").Cells(11, 4)) + Interval
+        CurrentWC = Cells(8, weekcol)
+        NextWC = Cells(8, weekcol + 1)
+            If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+                Cells(lastrow, weekcol).Value = "M B"
+            Else
+            End If
+    Else
+        DateToFind = (Worksheets("New Fleet Addition").Cells(11, 4)) + Interval
+        CurrentWC = Cells(8, weekcol)
+        NextWC = Cells(8, weekcol + 1)
+            If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+                Cells(lastrow, weekcol).Value = Cells(lastrow, weekcol).Value & " M B"
+            Else
+            End If
+    End If
+
+weekcol = weekcol + 1
+
+Loop
+
+If Not Sheets("New Fleet Addition").Cells(6, 3) = "Tractor" Then
+If Not Sheets("New Fleet Addition").Cells(6, 3) = "Van" Then
+'Add in Weight test date
+weekcol = 9
+
+Do While weekcol < 61
+    If Cells(lastrow, weekcol).Value = 0 Then
+        DateToFind = (Worksheets("New Fleet Addition").Cells(11, 7)) + Interval
+        CurrentWC = Cells(8, weekcol)
+        NextWC = Cells(8, weekcol + 1)
+            If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+                Cells(lastrow, weekcol).Value = "W"
+            Else
+            End If
+    Else
+        DateToFind = (Worksheets("New Fleet Addition").Cells(11, 7)) + Interval
+        CurrentWC = Cells(8, weekcol)
+        NextWC = Cells(8, weekcol + 1)
+            If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+                Cells(lastrow, weekcol).Value = Cells(lastrow, weekcol).Value & " W"
+            Else
+            End If
+    End If
+
+weekcol = weekcol + 1
+
+Loop
+Else
+End If
+Else
+End If
+
+'Add in Tacho Dates
+If Not Sheets("New Fleet Addition").Cells(6, 3) = "Van" Then
+weekcol = 9
+Interval = 730
+
+Do While weekcol < 61
+    If Cells(lastrow, weekcol).Value = 0 Then
+        DateToFind = (Worksheets("New Fleet Addition").Cells(11, 8)) + Interval
+        CurrentWC = Cells(8, weekcol)
+        NextWC = Cells(8, weekcol + 1)
+            If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+                Cells(lastrow, weekcol).Value = "T"
+            Else
+            End If
+    Else
+        DateToFind = (Worksheets("New Fleet Addition").Cells(11, 8)) + Interval
+        CurrentWC = Cells(8, weekcol)
+        NextWC = Cells(8, weekcol + 1)
+            If DateToFind >= (CurrentWC) And DateToFind < (NextWC) Then
+                Cells(lastrow, weekcol).Value = Cells(lastrow, weekcol).Value & " T"
+            Else
+            End If
+    End If
+
+weekcol = weekcol + 1
+
+Loop
+Else
+End If
+
+week = 9
+lastrow = Range("C65536").End(xlUp).Row
+
+Do While Not IsEmpty(Cells(8, week))
+    If Not Cells(lastrow + 1, week) = 0 Then
+    Cells(lastrow, week).Interior.ColorIndex = 2
+    Cells(lastrow + 1, week).Interior.ColorIndex = 2
+    Else
+    End If
+week = week + 1
+Loop
+
+'Finish Dell all "New Fleet Addition" data and message box
+    Sheets("New Fleet Addition").Select
+    
+rentalcompany = Cells(11, 9).Text
+MsgBox ("New " & rentalcompany & " Vehicle Added Successfully")
+    
+    Range("B11:I11").Select
+    Selection.ClearContents
+    Range("B11").Select
+    
+Application.ScreenUpdating = True
+
+
+
+
+End Sub
+
+Sub DeleteVehicle()
+
+Application.ScreenUpdating = False
+
+If Range("E17").Value = 0 Then
+    MsgBox "Please enter vehicle Registration"
+        Exit Sub
+End If
+
+If Range("f17").Value = 0 Then
+    MsgBox "Please enter vehicle type"
+        Exit Sub
+End If
+
+If Range("G17").Value = 0 Then
+    MsgBox "Please select from the drop down box the date the vehicle was de-hired/transfered"
+        Exit Sub
+End If
+
+RegToDel = Sheets("New Fleet Addition").Cells(17, 5).Text
+typesearch = 1
+RegSearch = 3
+
+MSG1 = MsgBox("Are you sure you wish to remove " & RegToDel & " from this workbook. This cannot be undone.", vbYesNo + vbCritical, "Delete " & RegToDel & "?")
+
+If MSG1 = vbNo Then
+  Exit Sub
+Else
+End If
+
+Sheets("Fleet List").Select
+
+Do While Not IsEmpty(Cells(3, typesearch))
+    Do While Not IsEmpty(Cells(RegSearch, typesearch))
+        If Cells(RegSearch, typesearch).Text = RegToDel Then
+            Cells(RegSearch, typesearch).Select
+            Selection.ClearContents
+        Else
+        End If
+    RegSearch = RegSearch + 1
+    Loop
+typesearch = typesearch + 1
+RegSearch = 3
+Loop
+
+
+'Check Rental
+rentaltypesearch = 1
+rentalRegsearch = 15
+
+Do While Not IsEmpty(Cells(3, rentaltypesearch))
+    Do While Not IsEmpty(Cells(rentalRegsearch, rentaltypesearch))
+        If Cells(rentalRegsearch, rentaltypesearch).Text = RegToDel Then
+            Cells(rentalRegsearch, rentaltypesearch).Select
+            Selection.ClearContents
+        Else
+        End If
+    rentalRegsearch = rentalRegsearch + 1
+    Loop
+rentaltypesearch = rentaltypesearch + 1
+rentalRegsearch = 15
+Loop
+
+'Add in off site date to planners
+
+Dim CurrentWC As Date
+Dim NextWC As Date
+Dim DateToFind As Date
+
+RegToDel = Sheets("New Fleet Addition").Cells(17, 5).Text
+DateRemoved = Sheets("New Fleet Addition").Cells(17, 7)
+weekcol = 9
+rowsearch = 9
+
+Sheets("Core Maintenance Planner").Select
+Do While Not IsEmpty(Cells(rowsearch, 3))
+    If Cells(rowsearch, 3) = RegToDel Then
+        Do While weekcol < 62
+            CurrentWC = Cells(8, weekcol)
+            NextWC = Cells(8, weekcol + 1)
+            If DateRemoved >= (CurrentWC) And DateRemoved < (NextWC) Then
+                Cells(rowsearch, weekcol) = DateRemoved
+                Cells(rowsearch + 1, weekcol) = "Off Site"
+                Do While weekcol < 62
+                    Cells(rowsearch, weekcol).Interior.ColorIndex = 3
+                    Cells(rowsearch + 1, weekcol).Interior.ColorIndex = 3
+                    weekcol = weekcol + 1
+                Loop
+            Else
+            End If
+        weekcol = weekcol + 1
+        Loop
+    Else
+    End If
+rowsearch = rowsearch + 2
+Loop
+
+Sheets("Rental Maintenance Planner").Select
+Do While Not IsEmpty(Cells(rowsearch, 3))
+    If Cells(rowsearch, 3) = RegToDel Then
+        Do While weekcol < 62
+            CurrentWC = Cells(8, weekcol)
+            NextWC = Cells(8, weekcol + 1)
+            If DateRemoved >= (CurrentWC) And DateRemoved < (NextWC) Then
+                Cells(rowsearch, weekcol) = DateRemoved
+                Cells(rowsearch + 1, weekcol) = "Off Site"
+                Do While weekcol < 62
+                    Cells(rowsearch, weekcol).Interior.ColorIndex = 3
+                    Cells(rowsearch + 1, weekcol).Interior.ColorIndex = 3
+                    weekcol = weekcol + 1
+                Loop
+            Else
+            End If
+        weekcol = weekcol + 1
+        Loop
+    Else
+    End If
+rowsearch = rowsearch + 2
+Loop
+    
+RegSearch = 1
+
+Sheets("Dates Input").Select
+    Do While Not IsEmpty(Cells(RegSearch, 1))
+        If Cells(RegSearch, 1).Text = RegToDel Then
+            Range("A" & RegSearch & ":K" & RegSearch + 5).Select
+            Selection.Delete Shift:=xlUp
+        Else
+        End If
+    RegSearch = RegSearch + 1
+    Loop
+    
+Range("E17:G17").ClearContents
+    
+MsgBox (RegToDel & " removed from site.")
+Sheets("New Fleet Addition").Select
+Application.ScreenUpdating = True
+
+End Sub
+
+
+Public Function DateCheck(d1 As Date, d2 As Date, d3 As Date) As Boolean
+    Dim wf As WorksheetFunction
+    Set wf = Application.WorksheetFunction
+
+    If d3 >= wf.Min(d1, d2) And d3 <= wf.Max(d1, d2) Then
+        DateCheck = True
+    Else
+        DateCheck = False
+    End If
+    
+End Function
+
+
+Sub MissedTEST()
+
+reg = Sheets("New Fleet Addition").Cells(22, 5).Text
+missed = Sheets("New Fleet Addition").Cells(22, 6).Text
+weeks = Sheets("New Fleet Addition").Cells(22, 7)
+wc = 9
+
+Sheets("Core Maintenance Planner").Select
+
+If Cells(Row, 3) = reg Then
+    If missed = "service" Then
+        Do While wc < 61
+        If Cells(Row + 1, wc) = "/" Then
+            Cells(Row + 1, wc) = ""
+            Cells(Row + 1, wc + missed) = Cells(Row + 1, wc + missed) & "/"
+            Else
+            End If
+        wc = wc + 1
+        Loop
+    Else
+    wc = 9
+    If missed = "service" Then
+        Do While wc < 61
+        If Cells(Row + 1, wc) = "/ I" Then
+            Cells(Row + 1, wc) = "I"
+            Cells(Row + 1, wc + missed) = Cells(Row + 1, wc + missed) & "/"
+            Else
+            End If
+        wc = wc + 1
+        Loop
+    Else
+    wc = 9
+    If missed = "service" Then
+        Do While wc < 61
+        If Cells(Row + 1, wc) = "/ I W" Then
+            Cells(Row + 1, wc) = "I W"
+            Cells(Row + 1, wc + missed) = Cells(Row + 1, wc + missed) & "/"
+            Else
+            End If
+        wc = wc + 1
+        Loop
+    Else
+    If missed = "service" Then
+        Do While wc < 61
+        If Cells(Row + 1, wc) = "/ T" Then
+            Cells(Row + 1, wc) = "T"
+            Cells(Row + 1, wc + missed) = Cells(Row + 1, wc + missed) & "/"
+            Else
+            End If
+        wc = wc + 1
+        Loop
+    Else
+    wc = 9
+'FINISH THIS-------------------------------------------------------------------------
+    wc = 9
+    If missed = "LOLA" Then
+        Do While wc < 61
+        If Cells(Row + 1, wc) = "I" Then
+            Cells(Row + 1, wc) = ""
+            Cells(Row + 1, wc + missed) = Cells(Row + 1, wc + missed) & "I"
+            Else
+            End If
+        wc = wc + 1
+        Loop
+            wc = 9
+    If missed = "Weight test" Then
+        Do While wc < 61
+        If Cells(Row + 1, wc) = "W" Then
+            Cells(Row + 1, wc) = ""
+            Cells(Row + 1, wc + missed) = Cells(Row + 1, wc + missed) & "W"
+            Else
+            End If
+        wc = wc + 1
+        Loop
+            wc = 9
+    If missed = "Tacho" Then
+        Do While wc < 61
+        If Cells(Row + 1, wc) = "T" Then
+            Cells(Row + 1, wc) = ""
+            Cells(Row + 1, wc + missed) = Cells(Row + 1, wc + missed) & "T"
+            Else
+            End If
+        wc = wc + 1
+        Loop
+            wc = 9
+    If missed = "MOT" Then
+        Do While wc < 61
+        If Cells(Row + 1, wc) = "M" Then
+            Cells(Row + 1, wc) = ""
+            Cells(Row + 1, wc + missed) = Cells(Row + 1, wc + missed) & "M"
+            Else
+            End If
+        wc = wc + 1
+        Loop
+
+
+End Sub
+
+Sub StartDateAdd()
+
+If Range("F24").Value = 0 Then
+MsgBox ("Please Enter Start Date")
+    Exit Sub
+    Else
+    End If
+
+SetBox = MsgBox("Are you sure you wish to set start dates for the Vehicle Planners?", vbYesNo + vbCritical, "Set Start Date for Vehicle Planners")
+
+If SetBox = vbNo Then
+  Exit Sub
+Else
+End If
+
+Dim start As Date
+
+start = Cells(24, 6)
+
+Sheets("Core Maintenance Planner").Cells(8, 9) = start
+Sheets("Rental Maintenance Planner").Cells(8, 9) = start
+
+MsgBox ("Year start date set to " & start)
+
+End Sub
+
+Sub Guide()
+
+MsgBox ("First, Please ensure that a start date has been entered and the 'set start date' button has been pressed.")
+MsgBox ("Then, enter the registration of the vehicle you wish to add and select the vehicle type from the drop down box.")
+MsgBox ("Then Please enter the last MOT, service, LOLA, Weight test, tacho calibration date and vehicle description as required. Dates that are not required will be filled in black.")
+MsgBox ("Once all dates have been entered press the button that reads 'add core vehicle' or 'add rental vehicle'.")
+MsgBox ("You will be asked if the vehicle is on a reduced 8 week service shedule. Please select 'Yes' or 'No'")
+MsgBox ("To remove a vehicle, simply type in the vehicle reg into Cell E17 and select the date the vehicle was de-hired/disposed and press the button marked 'remove vehicle'.")
+MsgBox ("If you un-protect any sheets, please remeber to press the 'Protect worksheet' button when finished. DO NOT protect each worksheet manualy")
+End Sub
+
+Sub protect()
+
+Sheet1.protect Password:="Tran_new1", UserInterFaceOnly:=True
+Sheet2.protect Password:="Tran_list1", UserInterFaceOnly:=True
+Sheet6.protect Password:="Tran_core1", UserInterFaceOnly:=True
+Sheet8.protect Password:="Tran_rent1", UserInterFaceOnly:=True
+Sheet4.protect Password:="Tran_date1", UserInterFaceOnly:=True
+
+MsgBox ("All sheets have now been protected. Please use defalt passwrods to un-protect")
+
+End Sub
+
