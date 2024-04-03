@@ -8,8 +8,7 @@ computer_score = 0
 def greeting():
   # giving the player a greeting at the start of the game. Accept this may not need to be a function but cleaner.
   # first entry ask
-  player_name = input('''Before we start, please tell me your name.
-  ''')
+  player_name = input('Before we start, please tell me your name.')
   return f"""
   Hi {player_name}! Welcome to my first game!
   
