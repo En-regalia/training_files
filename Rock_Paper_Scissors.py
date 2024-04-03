@@ -75,7 +75,7 @@ def check_win(player, computer):
 print(greeting())
 
 # Adding in loop  to contine the game if player or computor score is less than 3. If not game will end and display final score
-while player_score or computer_score < 3:
+while player_score < 3 and computer_score < 3:
   choices = get_choices()
 # dict defined in the 'get_choices' function (line 22)
   outcome = check_win(choices['player'], choices['computer'])
@@ -93,5 +93,4 @@ if player_score == 3:
 Your score is {player_score} vs computer score is {computer_score}''')
 else:
   print(f'''Oh no! the computor won.... Better luck next time.
-Your score is {player_score} vs computer score is {computer_score}''') 
-  
+Your score is {player_score} vs computer score is {computer_score}''')
