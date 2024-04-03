@@ -20,9 +20,9 @@ def greeting():
   Now to the game:"""
   
 def get_choices():
-  #Creating the options for the game in the form of a list
+  #Creating the options for the game in the form of a list and defining player choice constant
   Game_options =['rock', 'paper', 'scissors']
-  #defining player choice constant
+
   player_choice = input('''Please enter a choice. Either rock, paper or scissors: 
 ''')
   #While loop to confirm player entry is in the correct format and from the list of game options.
