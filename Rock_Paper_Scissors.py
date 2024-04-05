@@ -63,7 +63,7 @@ def check_win(player, computer):
       player_score = player_score + 1
       return 'Paper covers rock! You Win.'
   elif player == 'scissors':
-    if computer == 'Paper':
+    if computer == 'paper':
       player_score = player_score + 1
       return 'Scissors cut paper! You Win!'
     else:
