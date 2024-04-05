@@ -1,3 +1,5 @@
+# inserting new test comment to add to main branch through pull request on GitHub
+
 import random
 # setting player and computor scors to 0 at start of game.
 player_score = 0
