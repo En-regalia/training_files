@@ -1,5 +1,3 @@
-#Mike Ranner's First Python Code. This is a basic rock paper scissors game.
-
 import random
 # setting player and computor scors to 0 at start of game.
 player_score = 0
