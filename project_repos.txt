@@ -1,0 +1,24 @@
+# Project Repositories
+
+Below is a list of project repositories that I am currently working on or have completed:
+
+1. **Rock, Paper, Scissors**
+   - Repository Link: [Link to Repository](https://github.com/username/project-name-1)
+   - Description: Inital project in Python. Rock, Paper, Scissors game with a score counter. Game is best of 3. 
+   - Future: Add in option for PvP, if possible link global player score board.
+   - Status: Completed
+
+2. **Article Summary**
+   - Repository Link: [Link to Repository](https://github.com/username/project-name-2)
+   - Description: The application takes the top 10 articles from a website and then lists the URLs and titles in a CSV. Most recent update then takes these artiles and summaries these artiles using EdenAI.
+   - Future: look at options to send out summary to list of emails thoughts would be to update HTML file and then send rather than CSV
+   - Status: In progress
+
+2. **Weather App**
+   - Repository Link: [Link to Repository](https://github.com/username/project-name-2)
+   - Description: Basic weather app.
+   - Future: Start of project.
+   - Status: In Progress
+
+
+Feel free to explore these repositories to learn more about the projects I've been working on. If you have any questions or feedback, don't hesitate to reach out!
